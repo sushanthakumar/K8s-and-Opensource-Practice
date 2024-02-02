@@ -1,0 +1,29 @@
+# Setup user privilege
+su root
+nano /etc/sudoers
+
+#Network and access setup
+sudo apt install net-tools
+sudo apt-get install openssh-server
+sudo apt -y install curl
+
+# Docker install
+sudo apt update
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+apt-cache policy docker-ce
+sudo apt install -y docker-ce
+sudo systemctl status docker
+
+#Adding your username to the docker group
+sudo usermod -aG docker ${USER}
+su - ${USER}
+docker info
+docker images
+
+# Test docker installation
+docker run hello-world
+
+
+
