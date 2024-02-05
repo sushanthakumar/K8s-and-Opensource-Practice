@@ -53,3 +53,5 @@ mv ./kubectl ~/.local/bin/kubectl
 # Verify the installation
 kubectl version --client
 
+
+
